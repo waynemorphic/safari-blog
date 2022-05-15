@@ -5,11 +5,6 @@ from .config import config_options
 
 bootstrap = Bootstrap()
 
-# app = Flask(__name__)
-
-# app.config.from_object(DevConfig)
-
-# from .main import views
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -26,21 +21,3 @@ def create_app(config_name):
 
     return app
 
-# from .config import DevConfig
-# from flask_bootstrap import Bootstrap
-# from .config import config_options
-# from . import views
-
-
-# bootstrap = Bootstrap()
-
-
-# def create_app(config_name):
-#     app = Flask(__name__)
-    
-#     app.config.from_object(config_options[config_name])
-    
-#     bootstrap.init_app(app)
-    
-    
-#     return app
