@@ -4,9 +4,9 @@ class Config:
     '''
     General configuration parent class
     '''
-    SECRET_KEY = os.environ.get('SECRET_KEY')
+    SECRET_KEY = '987654321'
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wayne:123@localhost/safaridb'
-
+    UPLOADED_PHOTOS_DEST ='app/static/photos'
 
 class ProdConfig(Config):
     '''
