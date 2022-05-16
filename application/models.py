@@ -4,7 +4,7 @@ from . import login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     '''
     user class
     Args:
@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     bio = db.Column(db.String(255))
     image_file = db.Column(db.String(20), default = 'default.jpeg')
     pass_hash = db.Column(db.String(255))
-    posts = db.relationship('post', backref = 'author', lazy = True) 
+    posts = db.relationship('Post', backref = 'author', lazy = True) 
     comment_stuff = db.relationship('Comment', backref = 'user', lazy = 'dynamic')
     
 
@@ -78,16 +78,17 @@ class Post(db.Model):
         return user_post
     
     def __repr__(self):
-        return f'Users {self.date_posted}, {self.upvote}, {self.downvote}'
+        return f'Post {self.date_posted}, {self.post_stuff}'
     
 class Comment(db.Model):
     '''
     class defines the user comments
     '''
     __tablename__ = 'comment'
+    id = db.Column(db.Integer, primary_key = True)
     comment_stuff = db.Column(db.Text)
     date_posted = db.Column(db.DateTime, default = datetime.utcnow)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     
     # saving the comment
