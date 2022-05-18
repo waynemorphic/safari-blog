@@ -15,9 +15,9 @@ class ProdConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
-    # SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
-    # if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
-    #     SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    if SQLALCHEMY_DATABASE_URI.startswith("postgres://"):
+        SQLALCHEMY_DATABASE_URI = SQLALCHEMY_DATABASE_URI.replace("postgres://", "postgresql://", 1)
 
 
 class DevConfig(Config):
@@ -28,7 +28,7 @@ class DevConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
     
-    DEBUG = True
+    DEBUG = False
 
 class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://wayne:123@localhost/safaridb'
