@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<body style="background-color: teal">
+<div style="margin: 2%;">
+    {{ wtf.quick_form(form)}}
+</div>
+</body>
+
+{% endblock %}

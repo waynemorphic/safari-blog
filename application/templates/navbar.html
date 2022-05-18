@@ -2,13 +2,13 @@
     <div class="w3-bar">
         <a class="navbar-brand" href="{{url_for('main.index')}}" id="logo">SAFARI YA NYIKA</a>
         {% if current_user.is_authenticated %}
-        <a href="{{url_for('main.logout')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">LOGOUT</a>
-        <a href="{{url_for('main.profile', uname=current_user.username)}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">{{current_user.username}}'s PROFILE</a>
+        <a href="{{url_for('main.logout')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">Logout</a>
+        <a href="{{url_for('main.profile', uname=current_user.username)}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">{{current_user.username}}'s Profile</a>
         {% else %}
-        <a href="{{url_for('main.registration')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">SIGN IN</a>
+        <a href="{{url_for('main.login')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">Log In</a>
         {% endif %} 
-        
-        <a href="" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">POST BLOG</a>
-        <a href="{{url_for('main.index')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">HOME</a>
+        <a href="{{url_for('main.add_blog')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">Post Blog</a>
+        <a href="{{url_for('main.blogs')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">Blogs</a>
+        <a href="{{url_for('main.index')}}" class="w3-bar-item w3-button w3-hover-none w3-text-teal w3-hover-text-white w3-right">Home</a>
     </div>
 </nav>

@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block navbar %}
+{% include 'navbar.html' %}
+{% endblock %}
+
+{%block content %}
+    <div class="container fluid">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">&times;</button>
+            {{message}}
+            {% endfor %}
+        </div>
+        {% for blog in blogs%}
+        <div class="card">
+            <div class="card-header">
+                <img clss="rounded-circle" src="{{current_user.avatar(128)}}" style="width: 24px;">
+                <span><small>{{current_user.username | capitalize}}</small></span><br>
+                <h5></h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ blog.title_stuff}}</h5>
+                <main class="card-text">{{ blog.post_stuff}}</main><br>
+                <muted class="card-title">Posted on: {{ blog.date_posted.strftime('%Y-%m-%d') }}</muted>
+                
+                <muted class="card-title">Posted by: {{ blog.author.username }} </muted><br>
+
+                <a href="{{url_for('main.add_comment', post_id = blog.id)}}" class="btn btn-info">Comment</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{%endblock%}

@@ -7,35 +7,35 @@
 
 {% block content %}
 
-
-
-
-<body style="background-color: #FAACA8; background-image: linear-gradient(20deg, #FAACA8 50%, #DDD6F3 100%); background-repeat: no-repeat ;
- color: black; display: flex; justify-content: center; align-items: center;">
+<body style="background-color: #A1E887;">
     <div class="container">
         <div class="row">
-            <div class="col" style="margin-top: 10%;">
-                <h3 style="text-align: center; font-family: 'Lora', serif;">Welcome to<span id="logo">SAFARI YA NYIKA</span></h3>
-        <div class="col-12">
-            
-            <div class="d-flex justify-content-center">
-                <div class="row gy-12">
-                    <div class="col-12">
-                        {{form.hidden_tag()}}
-                        {{wtf.quick_form(form)}}
-                        <small style="margin-top: 3%; font-family: 'Josefin Sans', sans-serif;">Don't have an account? <a
-                            href="{{ url_for('main.registration')}}"><span style="color: #03045E">Create Account Here</span></a></small>
+            <div class="col" style="transform: translate(-50%, -50%); top: 50%; left: 50%; position: absolute;">
+                <h3 style="text-align: center; font-family: 'Lora', serif;">Welcome to<span id="logo">SAFARI YA
+                        NYIKA</span></h3>
+                <div class="col-12">
+
+                    <div class="d-flex justify-content-center">
+                        <div class="row gy-12">
+                            <div class="col-12">
+                                {{form.hidden_tag()}}
+                                {{wtf.quick_form(form)}}
+                                <small style="margin-top: 3%; font-family: 'Josefin Sans', sans-serif;">Don't have an
+                                    account? <a href="{{ url_for('main.registration')}}"><span
+                                            style="color: #03045E">Create Account Here</span></a></small>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
             </div>
 
-        </div>
-    </div>
-    <div class="col">
-    </div>
+            <div class="col">
+            </div>
 
-    </div>
+
+
+        </div>
     </div>
 </body>
 {%endblock %}
