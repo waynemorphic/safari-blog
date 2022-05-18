@@ -36,15 +36,15 @@ class CommentForm(FlaskForm):
     '''
     class for taking user comments on posts
     '''
-    comment_stuff = StringField('Leave a Comment')
+    comment_stuff = TextAreaField('Leave a Comment')
     submit = SubmitField('Post')
 
 class PostForm(FlaskForm):
     '''
     class defines user pitches posted on the platform
     '''
-    title = StringField('Category i.e Tech, Marketing....')
-    post_stuff = TextAreaField('Enter Post', validators=[InputRequired(), Length(min=20)])
+    title_stuff = StringField('Blog Title')
+    post_stuff = TextAreaField('Blog Content', validators=[InputRequired(), Length(min=20)])
     submit = SubmitField('Submit')
 
 class UpdateProfile(FlaskForm):

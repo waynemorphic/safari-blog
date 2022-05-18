@@ -3,12 +3,13 @@ from datetime import datetime
 from . import login_manager
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
+from hashlib import md5
 
 class User(UserMixin, db.Model):
     '''
     user class
     Args:
-    username, email, bio, image_file, pass_hash, posts
+    username, email, bio, image_file, pass_hash, posts, comment_stuff
     '''
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key = True)
@@ -44,6 +45,11 @@ class User(UserMixin, db.Model):
     def load_user(user_id):
         return User.query.get(int(user_id))
     
+    # adding gravatars to the user profiles
+    def avatar(self, size):
+        digest = md5(self.email.lower().encode('utf-8')).hexdigest()
+        return 'https://www.gravatar.com/avatar/{}?d=identicon&s={}'.format(digest, size)
+        
     def __repr__(self):
         return f"User ({self.username }, { self.email}, {self.image_file})"
     
@@ -51,11 +57,11 @@ class Post(db.Model):
     '''
     class defines the posts
     Args:
-        title, content, date_posted, upvote, downvote, category
+        title_stuff, post_stuff, date_posted, comment_stuff, user_id
     '''
     __tablename__ = 'post'
     id = db.Column(db.Integer, primary_key = True)
-    title = db.Column(db.String)
+    title_stuff = db.Column(db.Text)
     post_stuff = db.Column(db.Text)
     date_posted = db.Column(db.DateTime, default = datetime.utcnow)
     comment_stuff = db.relationship('Comment', backref = 'post', lazy = 'dynamic')
@@ -83,6 +89,8 @@ class Post(db.Model):
 class Comment(db.Model):
     '''
     class defines the user comments
+    Args:
+        comment_stuff, date_posted, 
     '''
     __tablename__ = 'comment'
     id = db.Column(db.Integer, primary_key = True)
@@ -104,3 +112,10 @@ class Comment(db.Model):
     
     def __repr__(self):
         return f"Comment {self.comment_stuff}"
+
+class Quote:
+    def __init__(self, id, author, quote):
+        self.id = id 
+        self.author = author
+        self.quote = quote 
+        
